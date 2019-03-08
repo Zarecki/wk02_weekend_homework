@@ -23,9 +23,6 @@ def test_song_artist
   assert_equal("Blur", @song2.artist)
 end
 
-#test title
-#test artist
-
 
 
 

@@ -7,11 +7,19 @@ require_relative("../songs.rb")
 class TestGuests < MiniTest::Test
 
   def setup
-    @person1 = Person.new("Francis", "My Way", 50)
+    @guest1 = Guest.new("Francis", "My Way", 50)
   end
 
-#test name
-#test favourite songs
-#test wallet
+def test_guest_name
+  assert_equal("Francis", @guest1.name)
+end
+
+def test_guest_favourite_song
+  assert_equal("My Way", @guest1.favourite_song)
+end
+
+def test_guest_wallet
+  assert_equal(50, @guest1.wallet)
+end
 
 end
