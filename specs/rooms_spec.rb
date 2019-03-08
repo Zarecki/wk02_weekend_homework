@@ -20,4 +20,18 @@ class TestRooms < MiniTest::Test
     @room1 = Room.new(3, 0)
 
   end
+
+  def test_price_to_pay
+    assert_equal(0, @room1.price_to_pay)
+  end
+
+  def test_playlist_default
+    assert_equal(0, @room1.playlist.length)
+  end
+
+  def test_checked_in_guests
+    assert_equal(0, @room1.checked_in_guests.length)
+  end
+
+
 end
