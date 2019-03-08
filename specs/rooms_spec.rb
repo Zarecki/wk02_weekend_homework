@@ -29,8 +29,15 @@ class TestRooms < MiniTest::Test
     assert_equal(0, @room1.playlist.length)
   end
 
-  def test_checked_in_guests
-    assert_equal(0, @room1.checked_in_guests.length)
+  def test_count_checked_in_guests
+    result = count_checked_in_guests()
+    assert_equal(0, result)
+  end
+
+  def test_checking_guest_in
+    @room1.checked_in_guests << @guest1
+    result = count_checked_in_guests()
+    assert_equal(1, result)
   end
 
 
