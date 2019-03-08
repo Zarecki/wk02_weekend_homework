@@ -21,43 +21,55 @@ class TestRooms < MiniTest::Test
 
   end
 
-  def test_price_to_pay
-    assert_equal(0, @room1.price_to_pay)
-  end
-
-  def test_playlist_default
-    assert_equal(0, @room1.playlist.length)
-  end
-
-  def test_count_checked_in_guests
-    result = count_checked_in_guests()
+  # def test_price_to_pay
+  #   assert_equal(0, @room1.price_to_pay)
+  # end
+  #
+  # def test_playlist_default
+  #   assert_equal(0, @room1.library.length)
+  # end
+  #
+  # def test_count_checked_in_guests
+  #   result = count_checked_in_guests()
+  #   assert_equal(0, result)
+  # end
+  #
+  #
+  #
+  # def test_checking_guest_in
+  #   add_guest_to_room
+  #   result = count_checked_in_guests()
+  #   assert_equal(1, result)
+  # end
+  #
+  # def test_checking_guest_out
+  #   add_guest_to_room
+  #   result1 = count_checked_in_guests()
+  #   assert_equal(1, result1)
+  #   remove_guest_from_room
+  #   result2 = count_checked_in_guests()
+  #   assert_equal(0, result2)
+  # end
+  #
+  # def test_count_still_to_pay
+  #   add_guest_to_room
+  #   result1 = count_checked_in_guests()
+  #   assert_equal(1, result1)
+  #   remove_guest_from_room
+  #   result2 = count_still_to_pay()
+  #   assert_equal(1, result2)
+  # end
+  #
+  def test_count_songs_in_library
+    result = count_songs_in_library()
     assert_equal(0, result)
   end
 
-
-
-  def test_checking_guest_in
-    add_guest_to_room
-    result = count_checked_in_guests()
-    assert_equal(1, result)
-  end
-
-  def test_checking_guest_out
-    add_guest_to_room
-    result1 = count_checked_in_guests()
-    assert_equal(1, result1)
-    remove_guest_from_room
-    result2 = count_checked_in_guests()
-    assert_equal(0, result2)
-  end
-
-  def test_count_still_to_pay
-    add_guest_to_room
-    result1 = count_checked_in_guests()
-    assert_equal(1, result1)
-    remove_guest_from_room
-    result2 = count_still_to_pay()
-    assert_equal(1, result2)
+  def test_add_songs_to_library()
+    songlist = [@song1, @song2, @song3, @song4, @song5, @song6]
+    add_songs_to_library(songlist)
+    result = count_songs_in_library()
+    assert_equal(6, result)
   end
 
 end
