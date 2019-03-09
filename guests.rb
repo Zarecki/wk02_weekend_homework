@@ -10,5 +10,8 @@ attr_accessor :bill_to_pay
     @bill_to_pay = 0
   end
 
+  def favourite_song_cheer(guest, song)
+    return "Here, that's ma tune!" if guest.favourite_song == song
+  end
 
 end

@@ -22,4 +22,8 @@ def test_guest_wallet
   assert_equal(50, @guest1.wallet)
 end
 
+def test_favourite_song_cheer__true
+  assert_equal("Here, that's ma tune!", favourite_song_cheer(@guest1, @song6))
+end
+
 end
