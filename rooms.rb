@@ -53,3 +53,7 @@ end
     end
     return "Fully Booked"
   end
+
+  def room_charge(room, guest)
+    guest.bill_to_pay += (room.room_hire_cost / count_checked_in_guests(room))
+  end

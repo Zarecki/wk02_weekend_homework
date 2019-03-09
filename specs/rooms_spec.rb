@@ -83,7 +83,11 @@ class TestRooms < MiniTest::Test
   end
 
   def test_room_charge
-
+    add_guest_to_room(@room1, @guest1)
+    add_guest_to_room(@room1, @guest5)
+    room_charge(@room1, @guest1)
+    result = @guest1.bill_to_pay
+    assert_equal(15, result)
   end
 
 end
