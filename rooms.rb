@@ -1,29 +1,28 @@
 class Room
 
-attr_reader :price_to_pay, :playlist
+attr_reader :room_hire_cost, :playlist, :capacity
 attr_accessor :checked_in_guests, :still_to_pay, :library
 
-  def initialize(capacity, price_to_pay)
+  def initialize(capacity, room_hire_cost)
     @capacity = capacity
-    @price_to_pay = 0
     @library = []
-    @room_hire = 5
+    @room_hire_cost = room_hire_cost
     @checked_in_guests = []
     @still_to_pay = []
   end
 end
 
-  def count_checked_in_guests
-    return @room1.checked_in_guests.length
+  def count_checked_in_guests(room)
+    return room.checked_in_guests.length
   end
 
-  def add_guest_to_room
-    @room1.checked_in_guests << @guest1
+  def add_guest_to_room(room, guest)
+    room.checked_in_guests << guest
   end
 
-  def remove_guest_from_room
-    @room1.checked_in_guests.delete(@guest1)
-    @room1.still_to_pay << @guest1
+  def remove_guest_from_room(room, guest)
+    room.checked_in_guests.delete(guest)
+    room.still_to_pay << guest
   end
 
   def count_still_to_pay
@@ -38,4 +37,19 @@ end
     for song in songlist
       @room1.library << song
     end
+  end
+
+  def room_overflow(queue, cap1, cap2)
+    for guest in queue
+      if
+        count_checked_in_guests(@room1) < cap1
+        add_guest_to_room(@room1, guest)
+      elsif
+        count_checked_in_guests(@room1) >= cap1 && count_checked_in_guests(@room2) < cap2
+        add_guest_to_room(@room2, guest)
+      elsif
+        count_checked_in_guests(@room1) >= cap1 && count_checked_in_guests(@room2) >= cap2
+      end
+    end
+    return "Fully Booked"
   end
