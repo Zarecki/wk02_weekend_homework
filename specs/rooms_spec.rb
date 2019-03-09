@@ -22,6 +22,9 @@ class TestRooms < MiniTest::Test
     @guest6 = Guest.new("Tommy", "Bohemian Rhapsody", 100)
     @room1 = Room.new(3, 30)
     @room2 = Room.new(2, 20)
+    @item1 = Roomservice.new("Beer", 5)
+    @item2 = Roomservice.new("Shot", 3)
+    @item3 = Roomservice.new("Nachos", 7)
   end
 
   def test_price_to_pay
@@ -91,4 +94,30 @@ class TestRooms < MiniTest::Test
     assert_equal(15, result)
   end
 
+  def test_tally_bill
+    add_guest_to_room(@room1, @guest1)
+    consume_item(@guest1, @item1)
+    consume_item(@guest1, @item1)
+    result = tally_bill(@room1, @guest1)
+    assert_equal(40, result)
+  end
+
+  # def test_check_out_guest_and_total_bill
+  #   add_guest_to_room(@room1, @guest1)
+  #   consume_item(@guest1, @item1)
+  #   consume_item(@guest1, @item1)
+  #   check_out_guest_and_total_bill(@room1, @guest1)
+  #   result1 = tally_bill(@room1, @guest1)
+  #   result2 = count_still_to_pay()
+  #   assert_equal(40, result1)
+  #   assert_equal(1, result2)
+  # end
+
+  def test_tell_cashier_what_to_charge
+    add_guest_to_room(@room1, @guest1)
+    consume_item(@guest1, @item1)
+    consume_item(@guest1, @item1)
+    result = tell_cashier_what_to_charge(@room1, @guest1)
+    assert_equal(40, result)
+  end
 end
